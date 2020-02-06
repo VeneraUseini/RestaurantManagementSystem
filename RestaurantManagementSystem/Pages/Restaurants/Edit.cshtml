@@ -1,0 +1,44 @@
+﻿@page
+@model RestaurantManagementSystem.Pages.Restaurants.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2>Edit Restaurant</h2>
+<hr />
+
+<form method="post">
+    <div class="form-border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+        <input type="hidden" asp-for="Restaurant.Id" />
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Restaurant.Name" class="custom-label"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Restaurant.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Restaurant.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="Restaurant.DisplayOrder" class="custom-label"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Restaurant.DisplayOrder" class="form-control" />
+            </div>
+            <span asp-validation-for="Restaurant.DisplayOrder" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-sm btn-primary" />
+            <a asp-page="Index" class="btn btn-sm btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

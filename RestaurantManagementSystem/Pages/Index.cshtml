@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<br />
+@Html.Partial("_StatusMessage",Model.StatusMessage)
+<br />
+
+@foreach (var restaurant in Model.IndexVM.Restaurants)
+{
+    <h3 style="padding-left:50px;" class="text-success">@restaurant.Name</h3>
+    <div class="row">
+        <div class="col-sm-12">
+            @* Partial View *@
+            @Html.Partial("_ThumbnailAreaPartial",Model.IndexVM.MenuItems.Where(u=>u.Restaurant.Name.Equals(restaurant.Name)))
+        </div>
+    </div>
+}
